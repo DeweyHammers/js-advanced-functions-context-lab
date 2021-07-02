@@ -35,10 +35,11 @@ const createTimeOutEvent = function(timeOut){
 
 const hoursWorkedOnDate = function(date){
     let timeIn = this.timeInEvents.find(record => record.date === date);
-    const timeOut = this.timeOutEvents.find(record => record.date === date);
-    timeIn.hour === 1000 ? timeIn = 10 : timeIn = parseInt(timeIn.hour.toString().split('0'))
-    const hours = Math.abs(( timeIn - parseInt(timeOut.hour.toString().split('0')))) 
-    return hours
+    let timeOut = this.timeOutEvents.find(record => record.date === date);
+    timeIn.hour === 1000 ? timeIn = 10 : timeIn = parseInt(timeIn.hour.toString().split('0'));
+    timeOut.hour === 1000 ? timeOut = 10 : parseInt(timeOut.hour.toString().split('0'));
+    const hours = Math.abs(timeIn - timeOut);
+    return hours;
 }
 
 const wagesEarnedOnDate = function(date){
